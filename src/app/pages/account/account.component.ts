@@ -2,13 +2,13 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'app-order',
+  selector: 'app-account',
   standalone: true,
   imports: [
     CommonModule,
   ],
-  template: `<p>order works!</p>`,
-  styleUrl: './order.component.css',
+  templateUrl: "./account.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class OrderComponent { }
+
+export class AccountComponent { }

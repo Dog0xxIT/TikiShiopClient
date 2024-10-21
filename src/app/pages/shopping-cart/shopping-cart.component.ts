@@ -2,12 +2,13 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-shopping-cart',
   standalone: true,
   imports: [
     CommonModule,
   ],
-  templateUrl: "./login.component.html",
+  templateUrl: "./shopping-cart.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoginComponent { }
+
+export class ShoppingCartComponent { }

@@ -2,12 +2,13 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-product-overview',
   standalone: true,
   imports: [
     CommonModule,
   ],
-  templateUrl: "./login.component.html",
+  templateUrl: "./product-overview.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoginComponent { }
+
+export class ProductOverviewComponent { }

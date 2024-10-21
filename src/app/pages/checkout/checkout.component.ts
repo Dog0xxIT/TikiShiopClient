@@ -7,8 +7,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   imports: [
     CommonModule,
   ],
-  template: `<p>checkout works!</p>`,
-  styleUrl: './checkout.component.css',
+  templateUrl: "./checkout.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CheckoutComponent { }
