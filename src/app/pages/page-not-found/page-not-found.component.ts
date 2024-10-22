@@ -7,7 +7,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   imports: [
     CommonModule,
   ],
-  templateUrl: "./not-found.component.html",
+  templateUrl: "./page-not-found.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NotFoundComponent { }
+export class PageNotFoundComponent { }

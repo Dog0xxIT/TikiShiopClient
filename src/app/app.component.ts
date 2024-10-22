@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { initFlowbite } from 'flowbite';
-import { MainLayout } from './layouts/main-layout/main-layout';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ["./app.component.html"],
   standalone: true,
-  imports: [MainLayout],
+  imports: [RouterOutlet],
 })
 
 export class AppComponent implements OnInit {
