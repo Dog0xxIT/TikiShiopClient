@@ -1,4 +1,4 @@
-export interface Brand {
+export interface GetListBrandsResponse {
     id: number;
     name: string;
     slug: string;
