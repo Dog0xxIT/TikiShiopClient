@@ -4,4 +4,5 @@ export class ProblemDetailsResponse {
     public status: number;
     public detail: string;
     public traceId: string;
+    public errors: string[];
 }

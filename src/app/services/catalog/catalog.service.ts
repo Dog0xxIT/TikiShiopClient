@@ -51,6 +51,6 @@ export class CatalogService {
   }
 
   public getCategoriesHierarchy(): Observable<GetListCategoriesResponse[]> {
-    return this.http.get<GetListCategoriesResponse[]>(`${this.baseUrl} / categories / hierarchy`);
+    return this.http.get<GetListCategoriesResponse[]>(`${this.baseUrl}/categories/hierarchy`);
   }
 }

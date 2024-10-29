@@ -1,4 +1,11 @@
-import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import {
+  HttpErrorResponse,
+  HttpEvent,
+  HttpHandler,
+  HttpInterceptor,
+  HttpRequest,
+  HttpResponse
+} from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 
 export class ErrorInterceptor implements HttpInterceptor {
@@ -6,9 +13,9 @@ export class ErrorInterceptor implements HttpInterceptor {
     return next.handle(req).pipe(
       catchError((error: HttpErrorResponse) => {
         // Handle the error here
-        console.error('error occurred:', error);
+        console.error('Error occurred:', error);
         //throw error as per requirement
-        return throwError(error);
+       return throwError(error);
       })
     );
   }

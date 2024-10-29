@@ -16,6 +16,5 @@ export const appConfig: ApplicationConfig = {
       withInterceptorsFromDi()
     ),
     { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ]
 };

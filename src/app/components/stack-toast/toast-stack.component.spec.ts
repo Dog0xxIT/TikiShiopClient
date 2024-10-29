@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AlertComponent } from './alert.component';
+import { ToastStackComponent } from './toast-stack.component';
 
-describe('AlertComponent', () => {
-  let component: AlertComponent;
-  let fixture: ComponentFixture<AlertComponent>;
+describe('StackToastComponent', () => {
+  let component: ToastStackComponent;
+  let fixture: ComponentFixture<ToastStackComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AlertComponent]
+      imports: [ToastStackComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AlertComponent);
+    fixture = TestBed.createComponent(ToastStackComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
