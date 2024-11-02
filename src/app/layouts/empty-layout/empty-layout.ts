@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-emptylayout',
+  selector: 'app-empty-layout',
   standalone: true,
   imports: [
     CommonModule,
@@ -12,5 +12,4 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: "./empty-layout.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-
 export class EmptyLayout { }

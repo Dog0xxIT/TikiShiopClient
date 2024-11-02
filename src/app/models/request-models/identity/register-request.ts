@@ -5,9 +5,9 @@ export class RegisterRequest {
     public password: string;
 }
 
-export class RegisterForm {
-  public email: FormControl<string>;
-  public password: FormControl<string>;
-  public confirmPassword: FormControl<string>;
+export interface RegisterForm {
+   email: FormControl<string>;
+   password: FormControl<string>;
+   confirmPassword: FormControl<string>;
 }
 
