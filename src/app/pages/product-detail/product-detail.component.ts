@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { GetProductByIdResponse } from '../../models/response-models/catalog/get-product-by-id-response';
 import { Component, OnInit } from '@angular/core';
 import { CatalogService } from '../../services/catalog/catalog.service';
+import {MainLayout} from '../../layouts/main-layout/main-layout';
 
 @Component({
   selector: 'app-product-detail',
@@ -14,7 +15,8 @@ import { CatalogService } from '../../services/catalog/catalog.service';
     CommonModule,
     ProductInformationComponent,
     ProductReviewsComponent,
-    ReviewsHistoryComponent
+    ReviewsHistoryComponent,
+    MainLayout
   ],
   templateUrl: "./product-detail.component.html",
 })

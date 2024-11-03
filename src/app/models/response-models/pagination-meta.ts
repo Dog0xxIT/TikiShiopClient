@@ -1,7 +1,7 @@
 export class PaginationMeta {
-    public total: number;
-    public count: number;
-    public perPage: number;
-    public currentPage: number;
-    public totalPages: number;
+  public total: number = 0;
+  public count: number = 0;
+  public perPage: number = 0;
+  public currentPage: number = 0;
+  public totalPages: number = 0;
 }

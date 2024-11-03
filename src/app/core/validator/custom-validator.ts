@@ -1,8 +1,21 @@
-import {AbstractControl, ValidationErrors, ValidatorFn} from '@angular/forms';
+import {AbstractControl, FormGroup, ValidationErrors, ValidatorFn} from '@angular/forms';
 
-export function compareValidator(nameRe: RegExp): ValidatorFn {
-  return (control: AbstractControl): ValidationErrors | null => {
-    const forbidden = nameRe.test(control.value);
-    return forbidden ? {forbiddenName: {value: control.value}} : null;
-  };
+export function confirmedPasswordValidator(controlName: string, matchingControlName: string): ValidatorFn {
+  return (abstractControl: AbstractControl): ValidationErrors | null => {
+    const control = abstractControl.get(controlName);
+    const matchingControl = abstractControl.get(matchingControlName);
+
+    if (matchingControl!.errors && !matchingControl!.errors?.['confirmedPassword']) {
+      return null;
+    }
+
+    if (control!.value !== matchingControl!.value) {
+      const error = {confirmedPassword: true};
+      matchingControl!.setErrors(error);
+      return error;
+    } else {
+      matchingControl!.setErrors(null);
+      return null;
+    }
+  }
 }

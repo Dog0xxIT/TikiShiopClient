@@ -9,6 +9,8 @@ import {UserService} from '../../services/user/user.service';
 import {StatusCodes} from 'http-status-codes';
 import {Utils} from '../../core/utils/utils';
 import {EmptyLayout} from '../../layouts/empty-layout/empty-layout';
+import {confirmedPasswordValidator} from '../../core/validator/custom-validator';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -31,14 +33,19 @@ export class RegisterComponent implements OnInit {
     private toastService: ToastService,
     private userService: UserService,
     private formBuilder: FormBuilder,
+    private router:Router
   ) {
   }
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.nonNullable.group({
-        email: ['', Validators.required, Validators.email],
-        password: ['', Validators.required],
-        confirmPassword: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required]],
+        confirmPassword: ['', [Validators.required]],
+        userName: ['', [Validators.required]]
+      },
+      {
+        validators: confirmedPasswordValidator('password', 'confirmPassword')
       }
     )
     this.registerForm.controls['email'].markAsTouched();
@@ -57,13 +64,14 @@ export class RegisterComponent implements OnInit {
         next: (next) => {
           if (next.status === StatusCodes.OK) {
             this.toastService.show(ToastType.Success, 'Register successfully! Please check confirm email.');
+            this.router.navigate(['/login']);
           }
         },
         error: (error) => {
           this.toastService.show(ToastType.Danger, error?.error?.detail ?? "Error");
           console.log(error);
         },
-        complete: () => console.info('complete')
+        complete: () => console.info('Register complete')
       })
   }
 }

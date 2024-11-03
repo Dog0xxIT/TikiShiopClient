@@ -26,8 +26,15 @@ export class CatalogService {
 
   constructor(private readonly http: HttpClient) { }
 
-  public getProducts(): Observable<PaginationResponse<GetListProductsResponse>> {
-    return this.http.get<PaginationResponse<GetListProductsResponse>>(`${this.baseUrl}/products`);
+  public getProducts(paginationRequest?: PaginationRequest): Observable<PaginationResponse<GetListProductsResponse>> {
+    return this.http.get<PaginationResponse<GetListProductsResponse>>(`${this.baseUrl}/products`,
+      {
+        params: paginationRequest != null ? {
+          limit: paginationRequest.limit,
+          page: paginationRequest.page,
+          sortDescending: paginationRequest.sortDescending
+        } : undefined
+      });
   }
 
   public getProductById(id: number): Observable<GetProductByIdResponse> {

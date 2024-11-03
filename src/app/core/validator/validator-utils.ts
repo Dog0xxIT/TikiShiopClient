@@ -1,4 +1,5 @@
 import {AbstractControl} from '@angular/forms';
+import {confirmedPasswordValidator} from './custom-validator';
 
 export class ValidatorUtils {
   static minMessage = (min: number) => `The value must be at least ${min}`;
@@ -9,6 +10,7 @@ export class ValidatorUtils {
   static minLengthMessage = (minLength: number) => `Minimum length is ${minLength} characters`;
   static maxLengthMessage = (maxLength: number) => `Maximum length is ${maxLength} characters`;
   static patternMessage = (pattern: string) => `The value does not match the required format (${pattern})`;
+  static confirmedPassword= 'Passwords do not match';
 
   static getErrorMessages(formControl: AbstractControl) {
     if (formControl.errors == null) {
@@ -38,6 +40,9 @@ export class ValidatorUtils {
     }
     if (errors['pattern']) {
       return (this.patternMessage(errors['pattern'].requiredPattern));
+    }
+    if (errors['confirmedPassword']) {
+      return this.confirmedPassword;
     }
     return null;
   }

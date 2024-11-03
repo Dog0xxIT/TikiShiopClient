@@ -5,6 +5,7 @@ import {CategoriesComponent} from '../../components/categories/categories.compon
 import {ProductsComponent} from '../products/products.component';
 import {HeroSectionComponent} from '../../components/hero-section/hero-section.component';
 import {MainLayout} from '../../layouts/main-layout/main-layout';
+import {SlideBarComponent} from '../../components/slide-bar/slide-bar.component';
 
 @Component({
   imports: [

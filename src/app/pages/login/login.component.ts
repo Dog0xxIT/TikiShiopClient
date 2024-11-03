@@ -1,15 +1,15 @@
-import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {ValidatorUtils} from '../../core/validator/validator-utils';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
-import {RegisterForm, RegisterRequest} from '../../models/request-models/identity/register-request';
 import {ToastService} from '../../states/toast-state/toast.service';
 import {UserService} from '../../services/user/user.service';
 import {Utils} from '../../core/utils/utils';
 import {StatusCodes} from 'http-status-codes';
 import {ToastType} from '../../components/stack-toast/toast-type';
-import {LoginForm} from '../../models/request-models/identity/login-request';
+import {LoginForm, LoginRequest} from '../../models/request-models/identity/login-request';
 import {EmptyLayout} from '../../layouts/empty-layout/empty-layout';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -32,13 +32,14 @@ export class LoginComponent {
     private toastService: ToastService,
     private userService: UserService,
     private formBuilder: FormBuilder,
+    private router: Router
   ) {
   }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.nonNullable.group({
-        email: ['', Validators.required, Validators.email],
-        password: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required]],
       }
     )
     this.loginForm.controls['email'].markAsTouched();
@@ -51,19 +52,19 @@ export class LoginComponent {
       return;
     }
 
-    let req = Utils.mapFormGroupToRequestModel<RegisterRequest>(this.loginForm);
+    let req = Utils.mapFormGroupToRequestModel<LoginRequest>(this.loginForm);
     this.userService.login(req)
       .subscribe({
         next: (next) => {
           if (next.status === StatusCodes.OK) {
             this.toastService.show(ToastType.Success, 'Login success!');
+            this.router.navigate(['/']);
           }
         },
         error: (error) => {
           this.toastService.show(ToastType.Danger, error?.error?.detail ?? "Error");
-          console.log(error);
         },
-        complete: () => console.info('complete')
+        complete: () => console.info('Login complete')
       })
   }
 }

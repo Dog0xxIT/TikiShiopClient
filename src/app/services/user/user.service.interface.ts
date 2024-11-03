@@ -6,7 +6,7 @@ import {ProblemDetailsResponse} from '../../models/response-models/problem-detai
 
 export interface UserServiceInterface {
     register(request: RegisterRequest): Observable<HttpResponse<void>>;
-    login(request: LoginRequest): Observable<any>;
+    login(request: LoginRequest): Observable<HttpResponse<void>>;
     externalLogin(request: any): Observable<any>;
     logout(): Observable<any>;
     refreshToken(): Observable<any>;
